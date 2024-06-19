@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+  --foreground-rgb: 15, 15, 15;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
@@ -17,17 +17,168 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  @apply font-sans m-0 p-0 transition-colors;
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  color: rgb(var(--foreground-rgb));
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.container {
+  @apply flex flex-col h-screen;
+}
+
+.top-bar {
+  @apply flex items-center justify-between p-2 bg-gray-100 border-b;
+}
+.dark-mode .top-bar {
+  @apply border-gray-700;
+  background-color: #4b5563;
+}
+.top-bar-title {
+  @apply text-xl font-bold;
+  color: #0a0a35;
+}
+
+.toggle-sidebar,
+.toggle-mode {
+  @apply bg-blue-500 text-white border-none rounded p-2 cursor-pointer outline-none;
+}
+
+.sidebar {
+  @apply w-64 bg-gray-100 p-5 border-r transition-all overflow-hidden;
+}
+
+.sidebar.hidden {
+  @apply w-0 p-0 overflow-hidden;
+}
+
+.logo {
+  @apply text-2xl font-bold mb-5;
+  color: #0a0a35;
+}
+
+.new-chat {
+  @apply cursor-pointer p-2 border rounded mb-5 bg-blue-500 text-white text-center relative;
+  max-width: 500px;
+  max-height: 100px;
+}
+
+.history {
+  @apply list-none p-0;
+}
+
+.history li {
+  @apply mb-2 p-2 border rounded cursor-pointer text-gray-700;
+}
+.dark-mode .history li {
+  @apply mb-2 p-2 border rounded cursor-pointer text-white;
+}
+
+.chat-content {
+  @apply flex flex-1 flex-col p-5 bg-white transition-colors;
+}
+
+.chat-messages {
+  @apply flex-1 overflow-y-auto;
+}
+
+.message {
+  @apply mb-3 p-2 rounded  text-gray-800;
+  animation: fadeIn 0.5s;
+}
+.dark-mode .message {
+  @apply mb-3 p-2 rounded  text-white;
+  animation: fadeIn 0.5s;
+}
+.user {
+  @apply bg-blue-500 text-white max-w-[50vw];
+  align-items: end;
+  justify-content: end;
+}
+
+.bot {
+  @apply bg-gray-100 text-gray-800;
+}
+
+.dark-mode .message .user {
+  @apply bg-blue-700 text-white;
+}
+
+.dark-mode .message .bot {
+  @apply bg-gray-600 text-gray-200;
+}
+
+.message-content {
+  @apply whitespace-pre-wrap border bg-gray-100 shadow-md rounded p-4 box-border;
+}
+
+.input-group {
+  @apply flex bg-white p-2 rounded-md;
+}
+
+.dark-mode,
+.input-group {
+  @apply flex bg-gray-500 p-2;
+}
+.dark-mode,
+.input-group textarea {
+  @apply flex-1 p-1  rounded-l outline-none resize-none  bg-gray-500;
+}
+.input-group textarea {
+  @apply flex-1 p-1  rounded-l outline-none resize-none  bg-white;
+  color: #0a0a35;
+  font-style: normal;
+}
+
+.input-group button {
+  @apply p-2 text-white rounded-r cursor-pointer outline-none;
+}
+
+.input-group button:hover {
+  @apply bg-blue-700;
+}
+
+.code-block {
+  @apply relative bg-gray-100 p-3 rounded font-mono;
+}
+
+.copy-button {
+  @apply absolute top-2 right-2 bg-blue-500 text-white border-none rounded p-1 cursor-pointer;
+}
+
+.copy-button:hover {
+  @apply bg-blue-700;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
+  100% {
+    opacity: 1;
+  }
+}
+
+.dark-mode {
+  @apply bg-gray-700 text-gray-200;
+}
+
+.dark-mode .chat-content {
+  @apply bg-gray-700;
+}
+
+.dark-mode .sidebar {
+  @apply bg-gray-600 border-gray-700;
+}
+
+.full-width {
+  @apply ml-0;
+}
+.icon {
+  height: 1em;
+  width: 1em;
 }

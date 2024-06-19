@@ -3,24 +3,37 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "dev": "next dev"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@google/generative-ai": "^0.13.0",
+    "body-parser": "^1.20.2",
+    "concurrently": "^8.2.2",
+    "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "next": "^14.2.4",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.4"
+    "react-markdown": "^9.0.1",
+    "rehype-raw": "^7.0.0",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@types/body-parser": "^1.19.5",
+    "@types/express": "^4.17.21",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/uuid": "^9.0.8",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.4",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.4"
+    "typescript": "^5"
   }
 }
